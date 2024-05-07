@@ -1,30 +1,9 @@
 import React from 'react'
-import { Col, Row, Image, Typography, Tabs, ConfigProvider, Grid } from 'antd';
+import { Col, Row, Image, Typography, Grid, Flex } from 'antd';
 import LoginForm from '../components/LoginForm';
-import ImzaForm from '../components/ImzaForm';
 
 const { Title } = Typography;
 const { useBreakpoint } = Grid;
-
-
-const onChange = (key) => {
-    console.log(key);
-};
-
-const items = [
-    {
-      key: '1',
-      label: 'Asan Login ilə daxil ol',
-      children: <ImzaForm />,
-    },
-    {
-      key: '2',
-      label: 'İstifadəçi adı və şifrə ilə daxil ol',
-      children: <LoginForm />,
-    }
-  ];
-
-
 
 const Users = ()=>{
   const screens = useBreakpoint();
@@ -32,58 +11,70 @@ const Users = ()=>{
   let subTitleLevel = 5;
   let logoWidth = '70px';
   let boxStyle = {
+    paddingLeft: '4rem', 
+    paddingRight: '4rem', 
+    paddingTop: '5rem',
+    background: '#e6f7ff'
+  };
+  let boxStyle2 = {
     paddingLeft: '3rem', 
     paddingRight: '3rem', 
-    paddingTop: '3rem'
-};
+  };
   if (screens.xl) {
-    titleLevel = 3;
-    subTitleLevel = 4;
-    logoWidth = '100px'
+    titleLevel = 2;
+    subTitleLevel = 2;
+    logoWidth = '160px'
     boxStyle = {
-      paddingLeft: '4rem', 
-      paddingRight: '4rem', 
-      paddingTop: '2rem'
+      paddingLeft: '5rem', 
+      paddingRight: '5rem', 
+      paddingTop: '5rem',
+      background: '#e6f7ff'
+    };
+    boxStyle2 = {
+      paddingLeft: '5rem', 
+      paddingRight: '5rem', 
     };
   } else if (screens.lg) {
-    titleLevel = 4;
-    subTitleLevel = 5;
-    logoWidth = '100px'
+    titleLevel = 3;
+    subTitleLevel = 3;
+    logoWidth = '140px'
+    boxStyle = {
+      paddingLeft: '5rem', 
+      paddingRight: '5rem', 
+      paddingTop: '5rem',
+      background: '#e6f7ff'
+    };
+    boxStyle2 = {
+      paddingLeft: '5rem', 
+      paddingRight: '5rem', 
+    };
+  } else if (screens.md) {
+    titleLevel = 3;
+    subTitleLevel = 3;
+    logoWidth = '120px'
     boxStyle = {
       paddingLeft: '4rem', 
       paddingRight: '4rem', 
-      paddingTop: '2rem'
+      paddingTop: '5rem',
+      background: '#e6f7ff'
     };
-  } else if (screens.md) {
-    titleLevel = 4;
-    subTitleLevel = 5;
-    logoWidth = '90px'
-    boxStyle = {
-      paddingLeft: '3rem', 
-      paddingRight: '3rem', 
-      paddingTop: '2rem'
+    boxStyle2 = {
+      paddingLeft: '4rem', 
+      paddingRight: '4rem', 
     };
   }
-
-        return (<Row>
-            <Col xs={{span: "0"}}  lg={{span: "14"}} xl={{span: "16"}} style={{ overflow: 'hidden' }} >
-                <Image style={{ width: 'auto', height: '100vh' }} src="https://picsum.photos/id/297/1400/1000" preview={false} />
+        return (
+        <Row>
+            <Col align='center' xs={{span: "0"}}  lg={{span: "12"}} xl={{span: "14"}} style={boxStyle} >
+              <Image style={{ width: logoWidth, height: 'auto' }} src="/logo.png" preview={false} />
+              <Title level={titleLevel} style={{paddingTop: '5rem'}}>Azərbaycan Respublikasının Energetika Nazirliyi yanında Bərpa Olunan Enerji Mənbələri Dövlət Agentliyi</Title>
+              <Title level={subTitleLevel} type="secondary" style={{paddingTop: '5rem'}}>Bərpa Olunan Enerji Mənbələri İnformasiya Sistemi</Title>
             </Col>
-            <Col xs={{span: "24"}}  lg={{span: "10"}} xl={{span: "8"}} style={boxStyle}>
-                <Image style={{ width: logoWidth, height: 'auto' }} src="/logo.png" preview={false} />
-                <Title level={titleLevel} type="default" style={{paddingBottom: '1rem'}}>Azərbaycan Respublikasının Energetika Nazirliyi yanında Bərpa Olunan Enerji Mənbələri Dövlət Agentliyi</Title>
-                <Title level={subTitleLevel} type="secondary" style={{paddingBottom: '5rem'}}>Bərpa Olunan Enerji Mənbələri İnformasiya Sistemi</Title>
-                <ConfigProvider
-                  theme={{
-                    components: {
-                      Tabs: {
-                        horizontalMargin:"0 0 3rem 0"
-                      },
-                    },
-                  }}
-                >
-                  <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
-                </ConfigProvider>
+            <Col xs={{span: "24"}}  lg={{span: "12"}} xl={{span: "10"}} style={boxStyle2}>
+              <Flex vertical style={{height: '100vh'}} justify='center' align='center'>
+              <Title level={subTitleLevel} type="secondary" style={{paddingBottom: '2rem'}}>Sistemə daxil ol</Title>
+                <LoginForm />
+              </Flex>
             </Col>
         </Row>
     )}
