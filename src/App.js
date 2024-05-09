@@ -10,7 +10,7 @@ const App = () => {
         <Route path="/" exact>
           <Users />
         </Route>
-        <Route path="/dasboard" exact>
+        <Route path="/dashboard" exact>
           <Dashboard />
         </Route>
         <Redirect to="/"/>

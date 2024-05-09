@@ -1,16 +1,19 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input, Image } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
 
-const onFinish = (values) => {
-  console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log('Failed:', errorInfo);
-};
 
-const LoginForm = () => (
-  <Form
+const LoginForm = () => {
+  const history = useHistory();
+  const onFinish = (values) => {
+    console.log('Success:', values);
+    history.push('/dashboard');
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };  
+  return <Form
   style={{ width: '80%' }}
     name="basic"
     initialValues={{
@@ -19,6 +22,7 @@ const LoginForm = () => (
     onFinish={onFinish}
     onFinishFailed={onFinishFailed}
     autoComplete="off"
+    method="post"
   >
     <Form.Item
       name="username"
@@ -56,5 +60,5 @@ const LoginForm = () => (
           <Button type="primary" ghost size='large' icon={<Image style={{height: '30px'}} src="/asanlogin.png" preview={false} />} htmlType="reset" style={{width: '100%', height: "50px"}}>Asan Login</Button>
       </Form.Item>
   </Form>
-);
+};
 export default LoginForm;
